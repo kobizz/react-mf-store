@@ -1,0 +1,23 @@
+{
+	"name": "react-mf",
+	"version": "1.0.0",
+	"description": "React Micro Frontend",
+	"type": "module",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kobizz/react-mf.git"
+	},
+	"scripts": {
+		"start": "lerna run start",
+		"build": "lerna run build"
+	},
+	"author": "Kobi Zaltzberg",
+	"license": "MIT",
+	"homepage": "https://github.com/kobizz/react-mf#readme",
+	"devDependencies": {
+		"lerna": "^6.5.1"
+	},
+	"workspaces": [
+		"packages/*"
+	]
+}
