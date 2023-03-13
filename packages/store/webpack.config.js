@@ -21,7 +21,7 @@ export default {
 					loader: 'babel-loader',
 					options: {
 						presets: [
-							['@babel/preset-react', {runtime: "automatic"}]
+							['@babel/preset-react', { runtime: 'automatic' }]
 						]
 					}
 				},
@@ -32,7 +32,7 @@ export default {
 			},
 			{
 				test: /\.css$/i,
-				use: ["style-loader", "css-loader"],
+				use: ['style-loader', 'css-loader'],
 			},
 		],
 	},
@@ -50,16 +50,16 @@ export default {
 		hot: true,
 		port: '8080',
 		headers: {
-			"Access-Control-Allow-Origin": "*",
+			'Access-Control-Allow-Origin': '*',
 		},
 	},
 	plugins: [
 		new ModuleFederationPlugin({
-			name: "store",
-			remoteType: "var",
+			name: 'store',
+			remoteType: 'var',
 			remotes: {
-				items: "items",
-				cart: "cart",
+				items: 'items',
+				cart: 'cart',
 			},
 			shared: {
 				...dependencies,
@@ -73,25 +73,25 @@ export default {
 					eager: true,
 					requiredVersion: dependencies.recoil
 				},
-				"react-dom": {
+				'react-dom': {
 					singleton: true,
 					eager: true,
-					requiredVersion: dependencies["react-dom"],
+					requiredVersion: dependencies['react-dom'],
 				},
-				"@mui/material": {
+				'@mui/material': {
 					singleton: true,
 					eager: true,
-					requiredVersion: dependencies["@mui/material"],
+					requiredVersion: dependencies['@mui/material'],
 				},
-				"@emotion/react": {
+				'@emotion/react': {
 					singleton: true,
 					eager: true,
-					requiredVersion: dependencies["@emotion/react"],
+					requiredVersion: dependencies['@emotion/react'],
 				},
-				"@emotion/styled": {
+				'@emotion/styled': {
 					singleton: true,
 					eager: true,
-					requiredVersion: dependencies["@emotion/styled"],
+					requiredVersion: dependencies['@emotion/styled'],
 				}
 			},
 		}),

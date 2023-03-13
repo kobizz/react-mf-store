@@ -16,21 +16,21 @@ export default () => {
 		>
 			{
 				Array(6).fill().map((nothing, index) => <Grid item key={index} xs={4}>
-						<Card>
-							<CardHeader
-								disableTypography
-								title={<Skeleton width={100} />}
-							/>
-							<Skeleton variant="rectangular" height={200} />
-							<CardActions
-								sx={{ justifyContent: 'flex-end' }}
-							>
-								<Skeleton variant="rectangular" width={50} />
-							</CardActions>
-						</Card>
-					</Grid>
+					<Card>
+						<CardHeader
+							disableTypography
+							title={<Skeleton width={100} />}
+						/>
+						<Skeleton variant="rectangular" height={200} />
+						<CardActions
+							sx={{ justifyContent: 'flex-end' }}
+						>
+							<Skeleton variant="rectangular" width={50} />
+						</CardActions>
+					</Card>
+				</Grid>
 				)
 			}
 		</Grid>
-	</>
+	</>;
 };

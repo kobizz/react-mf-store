@@ -19,8 +19,12 @@ export default () => {
 			<Box>
 				<AppBar position="absolute">
 					<Toolbar>
-						<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-							My Store
+						<Typography
+							variant="h2"
+							component="div"
+							fontFamily="Allison"
+							sx={{ flexGrow: 1 }}>
+							French Dessert
 						</Typography>
 					</Toolbar>
 				</AppBar>

@@ -7,5 +7,5 @@ export default () => {
 		<Skeleton variant="rectangular" height={40} sx={{ mt: 2 }} />
 		<Skeleton variant="rectangular" height={40} sx={{ mt: 2 }} />
 		<Skeleton variant="rectangular" height={40} sx={{ mt: 2 }} />
-	</>
-}
+	</>;
+};

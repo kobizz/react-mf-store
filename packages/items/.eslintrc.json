@@ -1,0 +1,89 @@
+{
+	"env": {
+		"browser": true,
+		"es6": true,
+		"commonjs": true,
+		"node": true,
+		"jest": true
+	},
+	"globals": {
+		"React": "readonly"
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended"
+	],
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
+	"parser": "@babel/eslint-parser",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": 2022,
+		"sourceType": "module",
+		"requireConfigFile": false,
+		"babelOptions": {
+			"presets": ["@babel/preset-react"]
+		}
+	},
+	"plugins": [
+		"react",
+		"react-hooks"
+	],
+	"ignorePatterns": [
+		"node_modules",
+		"dist"
+	],
+	"rules": {
+		"react-hooks/rules-of-hooks": "error",
+		"react/react-in-jsx-scope": "off",
+		"react/display-name": "off",
+		"indent": [
+			"error",
+			"tab",
+			{
+				"SwitchCase": 1
+			}
+		],
+		"jsx-quotes": "error",
+		"keyword-spacing": ["error", {
+			"before": true
+		}],
+		"quotes": ["error", "single"],
+		"space-infix-ops": "error",
+		"prefer-destructuring": "error",
+		"key-spacing": "error",
+		"semi": "error",
+		"semi-style": "error",
+		"arrow-spacing": "error",
+		"comma-spacing": "error",
+		"no-trailing-spaces": "error",
+		"curly": "error",
+		"max-statements-per-line": ["error", {
+			"max": 1
+		}],
+		"object-curly-spacing": ["error", "always"],
+		"max-len": ["error", {
+			"code": 120,
+			"tabWidth": 2
+		}],
+		"react/jsx-max-props-per-line": ["error", {
+			"maximum": 1,
+			"when": "multiline"
+		}],
+		"react/jsx-props-no-multi-spaces": "error",
+		"react/jsx-no-useless-fragment": "error"
+	},
+	"overrides": [
+		{
+			"files": [
+				"*.js",
+				"*.jsx"
+			]
+		}
+	]
+}

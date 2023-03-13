@@ -7,6 +7,6 @@ export default () => {
 	const productsInCart = useRecoilValue(getProductsInCart);
 
 	return <Badge badgeContent={productsInCart.length} color="secondary">
-		<ShoppingCart color="action" sx={{fontSize: 28}} />
-	</Badge>
+		<ShoppingCart color="action" sx={{ fontSize: 28 }} />
+	</Badge>;
 };
