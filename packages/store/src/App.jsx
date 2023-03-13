@@ -2,9 +2,12 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import { AppBar, Box, Container, Grid, Paper, Skeleton, Toolbar, Typography } from '@mui/material';
-import React from 'react';
+
+import { AppBar, Box, Container, Grid, Paper, Toolbar, Typography } from '@mui/material';
+import React, { Suspense } from 'react';
 import { RecoilRoot } from 'recoil';
+import CartSkeleton from './skeletons/CartSkeleton.jsx';
+import ItemsSkeleton from './skeletons/ItemsSkeleton.jsx';
 
 const Items = React.lazy(() => import('items/App'));
 const Cart = React.lazy(() => import('cart/App'));
@@ -22,29 +25,18 @@ export default () => {
 					</Toolbar>
 				</AppBar>
 				<Box component="main" sx={{ height: '100vh', mt: 10 }}>
-					<Container maxWidth="xl" sx={{ p: 4 }}>
-						<Grid container spacing={3}>
+					<Container maxWidth="lg" sx={{ p: 4 }}>
+						<Grid container spacing={5}>
 							<Grid item xs={12} md={8} lg={9}>
-								<Paper>
-									<React.Suspense>
-										<Items />
-									</React.Suspense>
-								</Paper>
+								<Suspense fallback={<ItemsSkeleton />}>
+									<Items />
+								</Suspense>
 							</Grid>
 							<Grid item xs={12} md={4} lg={3}>
-								<Paper sx={{ p: 3 }}>
-									<React.Suspense
-										fallback={
-											<>
-												<Skeleton width="60%" />
-												<Skeleton variant="rectangular" height={40} sx={{ mt: 2 }} />
-												<Skeleton variant="rectangular" height={40} sx={{ mt: 2 }} />
-												<Skeleton variant="rectangular" height={40} sx={{ mt: 2 }} />
-											</>
-										}
-									>
+								<Paper sx={{ p: 3, mt: 8 }}>
+									<Suspense fallback={<CartSkeleton />}>
 										<Cart />
-									</React.Suspense>
+									</Suspense>
 								</Paper>
 							</Grid>
 						</Grid>

@@ -60,6 +60,7 @@ export default {
 			exposes: {
 				// expose each component
 				"./App": "./src/App",
+				"./CartCounter": "./src/CartCounter",
 			},
 			shared: {
 				...dependencies,
@@ -99,4 +100,16 @@ export default {
 			template: './public/index.html',
 		}),
 	],
+	externals: ({ request }, callback) => {
+		if (/^store\//.test(request)) {
+
+			return callback( null,
+				request
+					.replace(/^store/, '__store')
+					.replace(/\//g, '.')
+			);
+		}
+
+		callback();
+	}
 };

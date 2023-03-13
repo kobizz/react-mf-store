@@ -57,6 +57,10 @@ export default {
 			name: "items",
 			filename: "remoteEntry.js",
 			library: { type: 'var', name: 'items' },
+			remoteType: "var",
+			remotes: {
+				cart: "cart",
+			},
 			exposes: {
 				// expose each component
 				"./App": "./src/App",
@@ -99,4 +103,16 @@ export default {
 			template: './public/index.html',
 		}),
 	],
+	externals: ({ request }, callback) => {
+		if (/^store\//.test(request)) {
+
+			return callback( null,
+				request
+					.replace(/^store/, '__store')
+					.replace(/\//g, '.')
+			);
+		}
+
+		callback();
+	}
 };

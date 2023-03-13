@@ -1,16 +1,24 @@
 import { Box, Button, Card, CardActions, CardHeader, CardMedia, Grid, Typography } from '@mui/material';
 import { useRecoilState } from 'recoil';
+import React from 'react';
+import { products } from 'store/atoms';
+
+const CartCounter = React.lazy(() => import('cart/CartCounter'));
 
 export default () => {
-	const [products, setProducts] = useRecoilState(window.__store.atoms.products);
+	const [fetchedProducts, setProducts] = useRecoilState(products);
 
-	return (
-		<Box sx={{p: 4}}>
-			<Typography
-				variant="h4"
-			>
-				French dessert
-			</Typography>
+	return <>
+			<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+				<Typography
+					variant="h5"
+					component="div"
+					color="text.secondary"
+				>
+					French dessert
+				</Typography>
+				<CartCounter />
+			</Box>
 			<Grid
 				container
 				spacing={4}
@@ -19,15 +27,14 @@ export default () => {
 				}}
 			>
 				{
-					products.map((product, index) => {
-						return <Grid item key={index} xs={4}>
+					fetchedProducts.map((product, index) => <Grid item key={index} xs={4}>
 							<Card>
 								<CardHeader
 									disableTypography
 									title={<Typography variant="subtitle1">{product.title}</Typography>}
 								/>
 								<CardMedia
-									sx={{ height: 200, backgroundColor: 'grey.200' }}
+									sx={{ height: 200, bgcolor: 'grey.200' }}
 									image={product.image}
 									title="Macarons"
 								/>
@@ -38,7 +45,7 @@ export default () => {
 										size="small"
 										color={product.inCart ? 'error' : 'primary'}
 										onClick={() => {
-											const newProducts = [...products].map((product, innerIndex) => {
+											const newProducts = [...fetchedProducts].map((product, innerIndex) => {
 												if (index === innerIndex) {
 													return {...product, inCart: ! product.inCart};
 												}
@@ -54,9 +61,8 @@ export default () => {
 								</CardActions>
 							</Card>
 						</Grid>
-					})
+					)
 				}
 			</Grid>
-		</Box>
-	);
+		</>
 };

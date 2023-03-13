@@ -1,53 +1,43 @@
-import { Box, Container, Paper, Typography } from '@mui/material';
+import { Avatar, Container, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
 import { AddShoppingCart } from '@mui/icons-material';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
+import { getProductsInCart } from 'store/selectors';
 
 export default () => {
-	const [products] = useRecoilState(window.__store.atoms.products);
-	const hasProductsInCart = products.some(product => product.inCart);
+	const productsInCart = useRecoilValue(getProductsInCart);
 
-	return <Box>
-		<Typography
-			variant="h5"
-			sx={{
-				mb: 6
-			}}
-		>
-			Cart
-		</Typography>
+	return <>
 		{
-			hasProductsInCart ?
-			products.map((product, index) => (
-				product.inCart ? (
-					<Paper
-						sx={{
-							p: 2,
-							mt: 2
-						}}
-						square
-						variant="outlined"
-						key={index}
-					>
-						<Typography variant="subtitle1" >{product.title}</Typography>
-						<Typography variant="subtitle1" color="text.secondary">{product.price}</Typography>
-					</Paper>
-				) : null
-			)) :
+			productsInCart.length ? (
+					<List>
+						{
+							productsInCart.map((product, index) => (
+								<ListItem sx={{px: 0}} key={index} divider>
+									<ListItemAvatar>
+										<Avatar src={product.image} />
+									</ListItemAvatar>
+									<ListItemText primary={product.title} secondary={product.price} />
+								</ListItem>
+							))
+						}
+					</List>
+				)
+				 :
 				<Container>
 					<AddShoppingCart
 						sx={{
-							fontSize: 240,
+							fontSize: 150,
 							color: 'grey.200',
 						}}
 					/>
 					<Typography
 						align="center"
 						variant="subtitle2"
-						color="grey.600"
+						color="grey.400"
 					>
 						No products in cart
 					</Typography>
 				</Container>
 		}
-	</Box>
+	</>
 };
