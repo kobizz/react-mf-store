@@ -1,4 +1,4 @@
-# React MF
+# React MF Store
 A simple react micro frontend store
 
 ## Getting Started
