@@ -40,26 +40,26 @@ export default {
 		extensions: ['.js', '.jsx'],
 	},
 	output: {
-		filename: 'bundle.js',
+		filename: '[name].js',
 		path: path.resolve(__dirname, 'dist'),
 		publicPath: 'auto',
 	},
 	devtool: 'cheap-module-source-map',
 	devServer: {
-		open: true,
 		hot: true,
-		port: '8080',
+		port: '8082',
 		headers: {
 			"Access-Control-Allow-Origin": "*",
 		},
 	},
 	plugins: [
 		new ModuleFederationPlugin({
-			name: "store",
-			remoteType: "var",
-			remotes: {
-				items: "items",
-				cart: "cart",
+			name: "cart",
+			filename: "remoteEntry.js",
+			library: { type: 'var', name: 'cart' },
+			exposes: {
+				// expose each component
+				"./App": "./src/App",
 			},
 			shared: {
 				...dependencies,

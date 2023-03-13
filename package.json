@@ -8,7 +8,7 @@
 		"url": "git+https://github.com/kobizz/react-mf.git"
 	},
 	"scripts": {
-		"start": "lerna run start",
+		"start": "lerna run --parallel start",
 		"build": "lerna run build"
 	},
 	"author": "Kobi Zaltzberg",

@@ -12,12 +12,22 @@ const { ModuleFederationPlugin } = webpack.container;
 const { dependencies } = require('./package.json');
 
 export default {
-	entry: './src/index.tsx',
+	entry: './src/index.js',
 	module: {
 		rules: [
 			{
-				test: /\.tsx?$/,
-				use: 'ts-loader',
+				test: /\.jsx?$/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: [
+							['@babel/preset-react', {runtime: "automatic"}]
+						]
+					}
+				},
+				resolve: {
+					fullySpecified: false,
+				},
 				exclude: /node_modules/,
 			},
 			{
@@ -27,16 +37,20 @@ export default {
 		],
 	},
 	resolve: {
-		extensions: ['.tsx', '.ts', '.js'],
+		extensions: ['.js', '.jsx'],
 	},
 	output: {
 		filename: '[name].js',
 		path: path.resolve(__dirname, 'dist'),
 		publicPath: 'auto',
 	},
+	devtool: 'cheap-module-source-map',
 	devServer: {
 		hot: true,
 		port: '8081',
+		headers: {
+			"Access-Control-Allow-Origin": "*",
+		},
 	},
 	plugins: [
 		new ModuleFederationPlugin({
@@ -53,6 +67,11 @@ export default {
 					singleton: true,
 					eager: true,
 					requiredVersion: dependencies.react
+				},
+				recoil: {
+					singleton: true,
+					eager: true,
+					requiredVersion: dependencies.recoil
 				},
 				"react-dom": {
 					singleton: true,

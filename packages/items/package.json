@@ -1,7 +1,7 @@
 {
 	"name": "items",
 	"version": "1.0.0",
-	"description": "My Store",
+	"description": "Store Items",
 	"type": "module",
 	"private": true,
 	"scripts": {
@@ -19,13 +19,16 @@
 		"@emotion/react": "^11.10.6",
 		"@emotion/styled": "^11.10.6",
 		"@fontsource/roboto": "^4.5.8",
+		"@mui/icons-material": "^5.11.11",
 		"@mui/material": "^5.11.12",
 		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
+		"react-dom": "^18.2.0",
+		"recoil": "^0.7.7"
 	},
 	"devDependencies": {
 		"@types/react": "^18.0.28",
 		"@types/react-dom": "^18.0.11",
+		"babel-loader": "^9.1.2",
 		"css-loader": "^6.7.3",
 		"html-webpack-plugin": "^5.5.0",
 		"style-loader": "^3.3.1",
