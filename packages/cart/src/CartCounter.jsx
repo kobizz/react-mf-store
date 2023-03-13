@@ -1,5 +1,5 @@
 import { Badge } from '@mui/material';
-import { ShoppingCart } from '@mui/icons-material';
+import ShoppingCart from '@mui/icons-material/ShoppingCart';
 import { useRecoilValue } from 'recoil';
 import { getProductsInCart } from 'store/selectors';
 

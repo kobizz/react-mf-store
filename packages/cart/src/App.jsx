@@ -1,5 +1,5 @@
 import { Avatar, Container, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
-import { AddShoppingCart } from '@mui/icons-material';
+import AddShoppingCart from '@mui/icons-material/AddShoppingCart';
 import { useRecoilValue } from 'recoil';
 import { getProductsInCart } from 'store/selectors';
 
